@@ -4,17 +4,23 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateUsersTable extends Migration
+class CreateAppointmentsTable extends Migration
 {
     /**
      * Run the migrations.
      *
      * @return void
      */
+
+    protected $primaryKey = 'appointment_id';
+
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
-            $table->bigIncrements('id');
+        Schema::create('appointments', function (Blueprint $table) {
+            $table->increments('client_id');
+            $table->dateTime('date_time');
+            $table->string('type');
+            $table->integer('price');
             $table->timestamps();
         });
     }
@@ -26,6 +32,6 @@ class CreateUsersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('appointments');
     }
 }
