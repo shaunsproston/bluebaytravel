@@ -11,9 +11,12 @@ class CreateUsersTable extends Migration
      *
      * @return void
      */
+    protected $fillable = ['id', 'name','email',];
+
     public function up()
     {
         Schema::create('users', function (Blueprint $table) {
+            /*
             $table->bigIncrements('id');
             $table->string('name');
             $table->string('email')->unique();
@@ -21,6 +24,7 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();
+            */
         });
     }
 

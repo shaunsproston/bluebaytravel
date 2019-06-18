@@ -14,6 +14,8 @@ class CreateAppointmentsTable extends Migration
 
     protected $primaryKey = 'appointment_id';
 
+    protected $fillable = ['client_id', 'date_time', 'type', 'price','duration',];
+
     public function up()
     {
         Schema::create('appointments', function (Blueprint $table) {
