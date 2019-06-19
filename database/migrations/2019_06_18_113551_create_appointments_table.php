@@ -18,6 +18,7 @@ class CreateAppointmentsTable extends Migration
             $table->dateTime('date_time');
             $table->string('type');
             $table->float('price')->nullable()->default(null);
+            $table->integer('duration');
             $table->timestamps();
         });
     }
