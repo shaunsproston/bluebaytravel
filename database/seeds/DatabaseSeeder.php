@@ -1,6 +1,6 @@
 <?php
 
-use App\User;
+use App\Clients;
 use App\Appointments;
 use App\Contacts;
 
