@@ -17,9 +17,30 @@ use Faker\Generator as Faker;
 */
 
 $factory->define(Appointments::class, function (Faker $faker) {
+    
+    $i = rand(0, 3);
+    $type = [
+        [
+            'name'     => 'Full Body Massage',
+            'duration' => 60,
+        ], [
+            'name'     => 'Back, Neck, Shoulder Massage',
+            'duration' => 30, 
+        ], [
+            'name'     => 'Foot Massage', 
+            'duration' => 30, 
+            
+        ], [
+            'name'     => 'Indian Head Massage',
+            'duration' => 30,
+        ],
+    ];
+
     return [
         'date' => $faker->dateTime($max = 'now', $timezone = null),
-        
-        
+        'type' => $faker->$type[$i]['name'],
+        'price' => $faker->randomFloat($nbMaxDecimals = 2, $min = 0, $max = 100),
+        'duration' => $faker->$type[$i]['duration'],
+        'client_id' => $faker->randomDigitNotNull,
     ];
 });
