@@ -15,7 +15,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        factory(User::class, 10)->create();
+        factory(Clients::class, 10)->create();
 
         factory(Appointments::class, 10)->create();
 
