@@ -23,24 +23,27 @@ $factory->define(Appointments::class, function (Faker $faker) {
         [
             'name'     => 'Full Body Massage',
             'duration' => 60,
+            'price'    => 35,
         ], [
             'name'     => 'Back, Neck, Shoulder Massage',
-            'duration' => 30, 
+            'duration' => 30,
+            'price'    => 25,
         ], [
             'name'     => 'Foot Massage', 
-            'duration' => 30, 
-            
+            'duration' => 30,
+            'price'    => 25,
         ], [
             'name'     => 'Indian Head Massage',
             'duration' => 30,
+            'price'    => 25,
         ],
     ];
 
     return [
-        'date' => $faker->dateTime($max = 'now', $timezone = null),
-        'type' => $faker->$type[$i]['name'],
-        'price' => $faker->randomFloat($nbMaxDecimals = 2, $min = 0, $max = 100),
-        'duration' => $faker->$type[$i]['duration'],
-        'client_id' => $faker->randomDigitNotNull,
+        'date' => $faker->dateTime(),
+        'type' => $type[$i]['name'],
+        'price' => $type[$i]['price'],
+        'duration' => $type[$i]['duration'],
+        'client_id' => $faker->numberBetween($min = 0, $max = 10),
     ];
 });
