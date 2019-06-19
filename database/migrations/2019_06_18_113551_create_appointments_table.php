@@ -11,7 +11,6 @@ class CreateAppointmentsTable extends Migration
      *
      * @return void
      */
-
     public function up()
     {
         Schema::create('appointments', function (Blueprint $table) {
