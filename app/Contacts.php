@@ -6,7 +6,15 @@ use Illuminate\Database\Eloquent\Model;
 
 class Contacts extends Model
 {
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var string[]
+     */
     protected $fillable = [
-        'client_id', 'date_time', 'type', 'price','duration',
+        'client_id',
+        'tel',
+        'email',
+        'address',
     ];    
 }
