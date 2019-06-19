@@ -14,4 +14,14 @@ class Clients extends Model
     protected $fillable = [
         'name',
     ];
+
+    public function appointments()
+    {
+        return $this->hasMany('App\Appointments');
+    }
+
+    public function contacts()
+    {
+        return $this->hasMany('App\Contacts');
+    }
 }
