@@ -11,6 +11,10 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
-        //
+        factory(Clients::class, 10)->create();
+
+        factory(Appointments::class, 10)->create();
+
+        factory(Contacts::class, 10)->create();
     }
 }
