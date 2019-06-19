@@ -12,12 +12,10 @@ class CreateContactsTable extends Migration
      * @return void
      */
 
-    protected $primaryKey = 'contact_id'; 
-
     public function up()
     {
         Schema::create('contacts', function (Blueprint $table) {
-            $table->increments('contact_id');
+            $table->bigIncrements('id');
             $table->string('email');
             $table->string('address');
             $table->timestamps();

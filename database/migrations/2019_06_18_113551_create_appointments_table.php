@@ -12,17 +12,13 @@ class CreateAppointmentsTable extends Migration
      * @return void
      */
 
-    protected $primaryKey = 'appointment_id';
-
-    protected $fillable = ['client_id', 'date_time', 'type', 'price','duration',];
-
     public function up()
     {
         Schema::create('appointments', function (Blueprint $table) {
             $table->increments('client_id');
             $table->dateTime('date_time');
             $table->string('type');
-            $table->integer('price');
+            $table->float('price')->nullable()->default(null);
             $table->timestamps();
         });
     }
