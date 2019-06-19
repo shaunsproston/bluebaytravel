@@ -21,6 +21,6 @@ $factory->define(Contacts::class, function (Faker $faker) {
         'tel' => $faker->phoneNumber,
         'email' => $faker->email,
         'address' => $faker->address,
-        'client_id' => $faker->numberBetween($min = 0, $max = 10),
+        'client_id' => $faker->numberBetween(1, 10),
     ];
 });

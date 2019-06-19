@@ -1,6 +1,8 @@
 <?php
 
-use Illuminate\Database\Seeder;
+use App\Clients;
+use App\Appointments;
+use App\Contacts;
 
 class UsersTableSeeder extends Seeder
 {
@@ -12,9 +14,10 @@ class UsersTableSeeder extends Seeder
     public function run()
     {
         factory(Clients::class, 10)->create();
-
+        
         factory(Appointments::class, 10)->create();
 
         factory(Contacts::class, 10)->create();
+        
     }
 }

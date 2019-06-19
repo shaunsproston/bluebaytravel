@@ -40,10 +40,10 @@ $factory->define(Appointments::class, function (Faker $faker) {
     ];
 
     return [
-        'date' => $faker->dateTime(),
+        'date_time' => $faker->dateTime(),
         'type' => $type[$i]['name'],
         'price' => $type[$i]['price'],
         'duration' => $type[$i]['duration'],
-        'client_id' => $faker->numberBetween($min = 0, $max = 10),
+        'client_id' => $faker->numberBetween(1, 10),
     ];
 });
