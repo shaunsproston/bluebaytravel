@@ -18,4 +18,9 @@ class Appointments extends Model
         'price',
         'duration',
     ];
+
+    public function clients()
+    {
+        return $this->belongsTo(Clients::class);
+    }
 }

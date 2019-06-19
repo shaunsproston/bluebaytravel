@@ -16,5 +16,10 @@ class Contacts extends Model
         'tel',
         'email',
         'address',
-    ];    
+    ];
+
+    public function clients()
+    {
+        return $this->belongsTo(Clients::class);
+    }
 }
