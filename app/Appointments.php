@@ -6,7 +6,16 @@ use Illuminate\Database\Eloquent\Model;
 
 class Appointments extends Model
 {
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var string[]
+     */
     protected $fillable = [
-        'id', 'date_time', 'type', 'price',
+        'client_id',
+        'date_time', 
+        'type', 
+        'price',
+        'duration',
     ];
 }
