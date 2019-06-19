@@ -17,11 +17,11 @@ class Clients extends Model
 
     public function appointments()
     {
-        return $this->hasMany('App\Appointments');
+        return $this->hasMany(Appointments::class);
     }
 
     public function contacts()
     {
-        return $this->hasMany('App\Contacts');
+        return $this->hasMany(Contacts::class);
     }
 }
