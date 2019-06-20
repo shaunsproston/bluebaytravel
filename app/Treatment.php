@@ -5,7 +5,7 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
-class Contact extends Model
+class Treatment extends Model
 {
     /**
      * The attributes that are mass assignable.
@@ -13,10 +13,9 @@ class Contact extends Model
      * @var string[]
      */
     protected $fillable = [
-        'client_id',
-        'tel',
-        'email',
-        'address',
+        'type',
+        'duration',
+        'price',
     ];
 
     /**

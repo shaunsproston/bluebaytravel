@@ -14,10 +14,8 @@ class Appointment extends Model
      */
     protected $fillable = [
         'client_id',
-        'date_time', 
-        'type', 
-        'price',
-        'duration',
+        'treatment_id',
+        'treatment_start_time',
     ];
 
     /**
