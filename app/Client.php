@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Clients extends Model
+class Client extends Model
 {
     /**
      * The attributes that are mass assignable.
@@ -17,11 +17,11 @@ class Clients extends Model
 
     public function appointments()
     {
-        return $this->hasMany(Appointments::class);
+        return $this->hasMany(Appointment::class);
     }
 
     public function contacts()
     {
-        return $this->hasMany(Contacts::class);
+        return $this->hasMany(Contact::class);
     }
 }

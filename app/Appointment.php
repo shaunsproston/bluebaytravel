@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Contacts extends Model
+class Appointment extends Model
 {
     /**
      * The attributes that are mass assignable.
@@ -13,13 +13,14 @@ class Contacts extends Model
      */
     protected $fillable = [
         'client_id',
-        'tel',
-        'email',
-        'address',
+        'date_time', 
+        'type', 
+        'price',
+        'duration',
     ];
 
     public function clients()
     {
-        return $this->belongsTo(Clients::class);
+        return $this->belongsTo(Client::class);
     }
 }

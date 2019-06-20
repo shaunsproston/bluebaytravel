@@ -1,7 +1,7 @@
 <?php
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
-use App\Appointments;
+use App\Appointment;
 use Illuminate\Support\Str;
 use Faker\Generator as Faker;
 
@@ -16,7 +16,7 @@ use Faker\Generator as Faker;
 |
 */
 
-$factory->define(Appointments::class, function (Faker $faker) {
+$factory->define(Appointment::class, function (Faker $faker) {
     
     $i = rand(0, 3);
     $type = [

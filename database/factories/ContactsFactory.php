@@ -1,7 +1,7 @@
 <?php
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
-use App\Contacts;
+use App\Contact;
 use Illuminate\Support\Str;
 use Faker\Generator as Faker;
 
@@ -16,7 +16,7 @@ use Faker\Generator as Faker;
 |
 */
 
-$factory->define(Contacts::class, function (Faker $faker) {
+$factory->define(Contact::class, function (Faker $faker) {
     return [
         'tel' => $faker->phoneNumber,
         'email' => $faker->email,

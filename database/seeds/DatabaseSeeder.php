@@ -1,8 +1,8 @@
 <?php
 
-use App\Clients;
-use App\Appointments;
-use App\Contacts;
+use App\Client;
+use App\Appointment;
+use App\Contact;
 
 use Illuminate\Database\Seeder;
 
@@ -15,10 +15,10 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        factory(Clients::class, 10)->create();
+        factory(Client::class, 10)->create();
 
-        factory(Appointments::class, 10)->create();
+        factory(Appointment::class, 10)->create();
 
-        factory(Contacts::class, 10)->create();
+        factory(Contact::class, 10)->create();
     }
 }
