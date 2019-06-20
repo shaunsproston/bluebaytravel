@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Client extends Model
 {
@@ -15,12 +16,18 @@ class Client extends Model
         'name',
     ];
 
-    public function appointments()
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function appointment(): HasMany
     {
         return $this->hasMany(Appointment::class);
     }
 
-    public function contacts()
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function contact(): HasMany
     {
         return $this->hasMany(Contact::class);
     }
