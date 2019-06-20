@@ -32,6 +32,6 @@ class Client extends Model
      */
     public function contact(): HasMany
     {
-        return $this->hasMany(Contact::class);
+        return $this->hasMany(Treatment::class);
     }
 }

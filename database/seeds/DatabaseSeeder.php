@@ -2,7 +2,7 @@
 
 use App\Client;
 use App\Appointment;
-use App\Contact;
+use App\Treatment;
 
 use Illuminate\Database\Seeder;
 
@@ -19,6 +19,6 @@ class DatabaseSeeder extends Seeder
 
         factory(Appointment::class, 10)->create();
 
-        factory(Contact::class, 10)->create();
+        factory(Treatment::class, 10)->create();
     }
 }
