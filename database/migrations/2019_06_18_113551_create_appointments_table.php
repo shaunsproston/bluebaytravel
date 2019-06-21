@@ -16,10 +16,8 @@ class CreateAppointmentsTable extends Migration
         Schema::create('appointments', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->integer('client_id');
-            $table->dateTime('date_time');
-            $table->string('type');
-            $table->float('price')->nullable()->default(null);
-            $table->integer('duration');
+            $table->integer('treatment_id');
+            $table->dateTime('treatment_start_time');
             $table->timestamps();
         });
     }
