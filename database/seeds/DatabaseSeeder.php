@@ -23,8 +23,8 @@ class DatabaseSeeder extends Seeder
                 $treatment = $treatments->random();
 
                 Appointment::create([
-                    'client_id' => $client->id,
-                    'treatment_id' => $treatment->id,
+                    'client_id'            => $client->id,
+                    'treatment_id'         => $treatment->id,
                     'treatment_start_time' => Carbon::now()->addMonths($i)->toDateTimeString(),
                 ]);
             }
