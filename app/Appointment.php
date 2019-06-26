@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Appointment extends Model
 {
@@ -18,6 +19,10 @@ class Appointment extends Model
         'treatment_start_time',
     ];
 
+    protected $casts = [
+        'treatment_start_time' => 'datetime',
+    ];
+
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
@@ -25,4 +30,13 @@ class Appointment extends Model
     {
         return $this->belongsTo(Client::class);
     }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function treatment(): BelongsTo
+    {
+        return $this->belongsTo(Treatment::class);
+    }
+
 }
