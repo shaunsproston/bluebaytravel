@@ -4,62 +4,44 @@
         <table class="table">
             <tr>
                 <th>Client Name</th>
-                <th>Type</th>
-                <th>Duration</th>
+                <th>Email</th>
+                <th>Address</th>
                 <th>Appointment Start Time</th>
             </tr>
-            <tr>
-                <td> {{ name }} </td>
-                <td> {{ type }} </td>
-                <td> {{ duration }} </td>
-                <td> {{ start_time }} </td>
+            <tr v-for="(item, index) in $data.appointments" :key="index">
+                <td> {{ item.name }} </td>
+                <td> {{ item.email }} </td>
+                <td> {{ item.address }} </td>
+                <td> {{ item.treatment_start_time }} </td>
             </tr>
         </table>
-        <p>Test</p>
     </div>   
 </template>
 
 <script>
-
 export default {
     data() {
         return {
-            name: [
-                { firstName: 'Bob'},
-                { firstName: 'Steve'},
-                { firstName: 'Dave'}
-            ],
-            type: [
-                { firstName: 'A'},
-                { firstName: 'B'},
-                { firstName: 'C'}
-            ],
-            duration: [
-                { firstName: '1'},
-                { firstName: '2'},
-                { firstName: '3'}
-            ],
-            start_time: [
-                { firstName: 'X'},
-                { firstName: 'Y'},
-                { firstName: 'Z'}
-            ]
-        }
-    }
-}
+            appointments: []
+        };
+    },
+    mounted () {
+        this.getAppointments();
+    },
+    methods: {
+        async getAppointments() {
+            try {
+                const response = await window.axios.get('/api/data');
+                const appointments = response.data.data;
 
-/*
-export default {
-    data() {
-        return {
-            name: 'Bob',
-            type: 'Foot Massage',
-            duration: '30 mins',
-            start_time: '7.30'
+                this.$data.appointments = appointments;
+            } catch (e) {
+                console.log(e);
+            }
+
         }
     }
 }
-*/
 
 </script>
 

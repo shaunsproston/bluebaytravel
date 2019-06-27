@@ -74,27 +74,8 @@
                     <h2>All Appointments</h2>
                 </div>
                 <div>
-                <first-component :clientName="{{ $appointments->toJson() }}"></first-component>
-                    {{--
-                    :blah="{{ $appointments->toJson() }}"
-                    <table class="table">
-                        <tr>
-                            <th>Client Name</th>
-                            <th>Type</th>
-                            <th>Duration</th>
-                            <th>Appointment Start Time</th>
-                        </tr>
-                        @foreach($appointments as $appointment)
-                        <tr>
-                            <td> {{ $appointment->client->name }} </td>
-                            <td> {{ $appointment->treatment->type }} </td>
-                            <td> {{ $appointment->treatment->duration }} </td>
-                            <td> {{ $appointment->treatment_start_time }} </td>
-                        </tr>
-                        @endforeach
-                    </table>
-                    --}}
-                </div>
+                    <first-component></first-component>
+                </div>  
             </div>
         </div>
     <script src="{{ asset('js/app.js')}}"></script>
