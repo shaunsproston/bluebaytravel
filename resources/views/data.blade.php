@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Hello World</title>
+        <title>Data</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
@@ -20,8 +20,12 @@
                 margin: 0;
             }
 
-            .full-height {
-                height: 100vh;
+            .table {
+                width:100%;
+            }
+            th, td {
+                padding: 5px;
+                border: solid black 1px;
             }
 
             .flex-center {
@@ -45,7 +49,7 @@
             }
 
             .title {
-                font-size: 84px;
+                font-size: 40px;
             }
 
             .links > a {
@@ -64,6 +68,16 @@
         </style>
     </head>
     <body>
-        <h1>Welcome</h1>
+        <div id="app" class="flex-center position-ref full-height">
+            <div class="content">
+                <div class="title m-b-md">
+                    <h2>All Appointments</h2>
+                </div>
+                <div>
+                    <first-component></first-component>
+                </div>  
+            </div>
+        </div>
+    <script src="{{ asset('js/app.js')}}"></script>
     </body>
 </html>
