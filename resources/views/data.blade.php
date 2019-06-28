@@ -3,9 +3,9 @@
 @section('content')
     <h1>List of all Appointments</h1>
     <hr>
-    <button>Back</button>
+    <a href="../"><button>Back</button></a>
     <div id="app">
         <first-component></first-component>
     </div>
-    <script src="{{ asset('js/app.js')}}"></script> 
+    <script src="{{ asset('js/app.js')}}"></script>
 @endsection

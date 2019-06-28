@@ -3,5 +3,5 @@
 @section('content')
     <h1>Bookings Page</h1>
     <hr>
-    <button>All Bookings</button>
+    <a href="/appointments"><button>All Bookings</button></a>
 @endsection
