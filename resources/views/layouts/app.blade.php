@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Hello World</title>
+        <title>Organiser App</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
@@ -64,6 +64,6 @@
         </style>
     </head>
     <body>
-        <h1>Welcome</h1>
+        @yield('content')
     </body>
 </html>

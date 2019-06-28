@@ -1,18 +1,17 @@
 <template>
     <div>
-        <h1>First Vue Component</h1>
         <table class="table">
             <tr>
                 <th>Client Name</th>
-                <th>Email</th>
-                <th>Address</th>
                 <th>Appointment Start Time</th>
+                <th>Duration</th>
+                <th class="more-info"></th>
             </tr>
             <tr v-for="(item, index) in $data.appointments" :key="index">
                 <td> {{ item.name }} </td>
-                <td> {{ item.email }} </td>
-                <td> {{ item.address }} </td>
                 <td> {{ item.treatment_start_time }} </td>
+                <td> {{ item.duration }} </td>
+                <td class="more-info"><button class="btn-info" href="#"> more info </button></td>
             </tr>
         </table>
     </div>   
