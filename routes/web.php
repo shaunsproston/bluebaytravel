@@ -16,4 +16,4 @@ Route::get('/', 'Controller@index');
 
 Route::get('/appointments', 'Controller@data');
 
-Route::get('/moreinfo', 'Controller@moreinfo');
+Route::get('/appointments/moreinfo/{appointment}', 'Controller@moreInfo');

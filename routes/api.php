@@ -23,5 +23,9 @@ use App\Http\Resources\AppointmentResource;
     Route::get('/data', function(){
        return AppointmentResource::collection(Appointment::all());
     });
+    
+    // Route::get('/appointments/moreinfo/{id}', function($id){
+    //     return AppointmentResource::collection(Appointment::find($id));
+    // });
 
 // });

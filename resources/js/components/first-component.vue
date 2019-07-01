@@ -1,7 +1,7 @@
 <template>
     <div>
         <table class="table">
-            <tr>
+            <tr class="h3">
                 <th>Client Name</th>
                 <th>Appointment Start Time</th>
                 <th>Duration</th>
@@ -11,7 +11,7 @@
                 <td> {{ item.name }} </td>
                 <td> {{ item.treatment_start_time }} </td>
                 <td> {{ item.duration }} </td>
-                <td class="more-info"><button class="btn-info" href="#"> more info </button></td>
+                <td class="more-info"><a :href="'/appointments/moreinfo/' + item.id"><button type="button" class="btn btn-info">more info</button></a></td>
             </tr>
         </table>
     </div>   

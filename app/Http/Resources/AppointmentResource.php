@@ -19,6 +19,8 @@ class AppointmentResource extends JsonResource
         $treatment = $appointment->treatment;
 
         return [
+            'id'                   => $appointment->id,
+            'client_id'            => $appointment->client_id,
             'name'                 => $client->name,
             'tel'                  => $client->tel,
             'email'                => $client->email,
@@ -26,7 +28,7 @@ class AppointmentResource extends JsonResource
             'type'                 => $treatment->type,
             'duration'             => $treatment->duration,
             'price'                => $treatment->price,
-            'treatment_start_time' => $appointment->treatment_start_time
+            'treatment_start_time' => $appointment->treatment_start_time,
         ];
     }
 }

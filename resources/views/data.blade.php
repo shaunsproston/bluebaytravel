@@ -1,9 +1,14 @@
 @extends('layouts/app')
 
 @section('content')
-    <h1>List of all Appointments</h1>
+    <div class="container h5 p-5">
+        <h1>List of all Appointments</h1>
+    </div>
     <hr>
-    <a href="../"><button>Back</button></a>
+    <div class="container">
+        <a href="../"><button type="button" class="btn btn-info">Back</button></a>
+    </div>
+    <hr>
     <div id="app">
         <first-component></first-component>
     </div>

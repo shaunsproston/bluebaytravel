@@ -9,6 +9,7 @@
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
 
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
         <!-- Styles -->
         <style>
             html, body {
@@ -61,9 +62,18 @@
             .m-b-md {
                 margin-bottom: 30px;
             }
+            h5{
+                font-weight: 600;
+            }
+            span{
+                color: navy;
+                font-weight: 600;
+            }
         </style>
     </head>
     <body>
-        @yield('content')
+        <div class="container">
+            @yield('content')
+        </div>
     </body>
 </html>
