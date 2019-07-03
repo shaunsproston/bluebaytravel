@@ -3,6 +3,7 @@
 namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
+use Carbon\Carbon;
 
 class AppointmentResource extends JsonResource
 {
@@ -17,6 +18,9 @@ class AppointmentResource extends JsonResource
         $appointment = $this->resource;
         $client = $appointment->client;
         $treatment = $appointment->treatment;
+        
+        $date = $appointment->treatment_start_time->toFormattedDateString();
+        $start_time = $appointment->treatment_start_time->toTimeString();
 
         return [
             'id'                   => $appointment->id,
@@ -28,7 +32,9 @@ class AppointmentResource extends JsonResource
             'type'                 => $treatment->type,
             'duration'             => $treatment->duration,
             'price'                => $treatment->price,
-            'treatment_start_time' => $appointment->treatment_start_time,
+            'date'                 => $date,
+            'treatment_start_time' => $start_time,
+            'treatment_end_time'   => $appointment->treatment_end_time,
         ];
     }
 }

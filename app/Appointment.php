@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
 class Appointment extends Model
 {
     /**
-     * The attributes that are mass assignable.
+     * The attributes that are mass assignable._
      *
      * @var string[]
      */
@@ -38,5 +38,11 @@ class Appointment extends Model
     {
         return $this->belongsTo(Treatment::class);
     }
+
+    public function getTreatmentEndTimeAttribute()
+    {
+        return $this->treatment_start_time->addMinutes($this->treatment->duration)->format('h:i a');
+    }
+
 
 }
