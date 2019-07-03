@@ -9,7 +9,9 @@
         <a href="../"><button type="button" class="btn btn-info">Back</button></a>
     </div>
     <hr>
+    <div class="container">
         <form class="form-horizontal" action="#">
+            <h3>Treatment details</h3>
             <div class="form-inline m-3">
                 <label class="control-label col-sm-3" for="treatment">Select treatment:</label>
                 <select class="form-control" id="treatment">
@@ -22,8 +24,7 @@
             <div class="form-inline m-3">
                 <br>
                 <label class="control-label col-sm-3"  for="treatmentDate">Select treatment date:</label>
-            <input class="form-control" type="date" name="treatmentDate" min="{{ Carbon::now()->format('Y-m-d') }}" max="{{ Carbon::now()->addMonths(3)->format('Y-m-d') }}">
-                {{-- <p>{{ $num }}</p> --}}
+                <input class="form-control" type="date" name="treatmentDate" min="{{ Carbon::now()->format('Y-m-d') }}" max="{{ Carbon::now()->addMonths(3)->format('Y-m-d') }}" required>
             </div>
             <div class="form-inline m-3">
                     <label class="control-label col-sm-3" for="treatmentTime">Select time slot:</label>
@@ -39,45 +40,45 @@
                     </select>
                 </div>
             <hr>
-            {{-- {{ $date2 }} --}}
+            <h3>Personal details</h3>
             <div class="form-inline m-3">
                 <label class="control-label col-sm-3" for="firstName">First Name:</label>
-                <input type="text" class="form-control" id="firstName">
+                <input type="text" class="form-control" id="firstName" required>
             </div>
             <div class="form-inline m-3">
                 <label class="control-label col-sm-3" for="lastName">Last Name:</label>
-                <input type="text" class="form-control" id="lastName">
+                <input type="text" class="form-control" id="lastName" required>
             </div>
             <div class="form-inline m-3">
                 <label class="control-label col-sm-3" for="email">Email:</label>
-                <input type="text" class="form-control" id="email">
+                <input type="email" class="form-control" id="email" required>
             </div>
             <div class="form-inline m-3">
                 <label class="control-label col-sm-3" for="tel">Telephone Number:</label>
-                <input type="number" class="form-control" id="tel">
+                <input type="tel" class="form-control" id="tel" required>
             </div>
             <hr>
+            <h3>Address</h3>
             <div class="form-inline m-3">
                 <label class="control-label col-sm-3" for="houseNumber">House Name / Number:</label>
-                <input type="number" class="form-control" id="houseNumber">
+                <input type="number" class="form-control" id="houseNumber" required>
             </div>
             <div class="form-inline m-3">
                     <label class="control-label col-sm-3" for="street">Street Name:</label>
-                    <input type="number" class="form-control" id="street">
+                    <input type="text" class="form-control" id="street" required>
                 </div>
             <div class="form-inline m-3">
                 <label class="control-label col-sm-3" for="town">Town / City:</label>
-                <input type="text" class="form-control" id="town">
+                <input type="text" class="form-control" id="town" required>
             </div>
             <div class="form-inline m-3">
                 <label class="control-label col-sm-3" for="county">County / State:</label>
-                <input type="text" class="form-control" id="county">
+                <input type="text" class="form-control" id="county" required>
             </div>
             <div class="form-inline m-3">
                 <label class="control-label col-sm-3" for="postcode">Postcode / Zipcode:</label>
-                <input type="text" class="form-control" id="postcode">
+                <input type="text" class="form-control" id="postcode" required>
             </div>
-            <br>
             <hr>
             <div class="form-inline m-3">
                 <div class="col-sm-offset-2 col-sm-10">
@@ -85,4 +86,5 @@
                 </div>
             </div>
         </form>
+    </div>
 @endsection
