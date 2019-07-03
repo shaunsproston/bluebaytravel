@@ -26,6 +26,11 @@ class Controller extends BaseController
         return view('data');
     }
 
+    public function bookingForm()
+    {   
+        return view('bookingform');
+    }
+
     public function moreInfo(Appointment $appointment)
     {   
         return view('moreinfo')

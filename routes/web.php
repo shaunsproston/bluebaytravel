@@ -17,3 +17,5 @@ Route::get('/', 'Controller@index');
 Route::get('/appointments', 'Controller@data');
 
 Route::get('/appointments/moreinfo/{appointment}', 'Controller@moreInfo');
+
+Route::get('/bookingForm', 'Controller@bookingForm');
