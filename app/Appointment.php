@@ -5,11 +5,12 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasOne;
+use Carbon\Carbon;
 
 class Appointment extends Model
 {
     /**
-     * The attributes that are mass assignable._
+     * The attributes that are mass assignable.
      *
      * @var string[]
      */
@@ -39,9 +40,9 @@ class Appointment extends Model
         return $this->belongsTo(Treatment::class);
     }
 
-    public function getTreatmentEndTimeAttribute()
+    public function getTreatmentEndTimeAttribute(): Carbon
     {
-        return $this->treatment_start_time->addMinutes($this->treatment->duration)->format('h:i a');
+        return $this->treatment_start_time->addMinutes($this->treatment->duration);
     }
 
 

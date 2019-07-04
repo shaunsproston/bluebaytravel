@@ -20,21 +20,29 @@ class AppointmentResource extends JsonResource
         $treatment = $appointment->treatment;
         
         $date = $appointment->treatment_start_time->toFormattedDateString();
-        $start_time = $appointment->treatment_start_time->toTimeString();
+        $start_time = $appointment->treatment_start_time->format('h:i a');
+        $end_time = $appointment->treatment_end_time->format('h:i a');
 
         return [
             'id'                   => $appointment->id,
             'client_id'            => $appointment->client_id,
-            'name'                 => $client->name,
+            'firstName'            => $client->firstName,
+            'lastName'             => $client->lastName,
             'tel'                  => $client->tel,
             'email'                => $client->email,
-            'address'              => $client->address,
+            'address'              => [
+                'houseNumber'          => $client->houseNumber,
+                'street'               => $client->street,
+                'town'                 => $client->town,
+                'county'               => $client->county,
+                'postcode'             => $client->postcode,
+            ],  
             'type'                 => $treatment->type,
             'duration'             => $treatment->duration,
             'price'                => $treatment->price,
             'date'                 => $date,
             'treatment_start_time' => $start_time,
-            'treatment_end_time'   => $appointment->treatment_end_time,
+            'treatment_end_time'   => $end_time,
         ];
     }
 }

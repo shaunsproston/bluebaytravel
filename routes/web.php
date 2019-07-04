@@ -12,9 +12,9 @@
 |
 */
 
-Route::get('/', 'Controller@index');
+Route::get('/', 'Controller@index')->name('home');
 
-Route::get('/appointments', 'Controller@data');
+Route::get('/appointments', 'Controller@data')->name('appointments');
 
 Route::get('/appointments/moreinfo/{appointment}', 'Controller@moreInfo');
 

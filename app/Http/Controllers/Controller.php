@@ -6,34 +6,36 @@ use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
+use Illuminate\Support\Collection;
 use App\Appointment;
 use App\Client;
 use App\Treatment;
 use App\Http\Resources\AppointmentResource;
 use Illuminate\Http\Request;
+use View;
 
 class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
-    
+
     public function index()
     {   
-        return view('index');
+        return View::make('index');
     }
 
     public function data()
     {   
-        return view('data');
+        return View::make('data');
     }
 
     public function bookingForm()
-    {   
-        return view('bookingform');
+    {
+        return View::make('bookingform')->withTreatments(Treatment::all());
     }
 
     public function moreInfo(Appointment $appointment)
     {   
-        return view('moreinfo')
+        return View::make('moreinfo')
             ->withData($appointment);
     }
 

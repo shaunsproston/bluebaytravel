@@ -23,5 +23,4 @@ use App\Http\Resources\AppointmentResource;
     Route::get('/data', function(){
        return AppointmentResource::collection(Appointment::all());
     });
-    
 // });
