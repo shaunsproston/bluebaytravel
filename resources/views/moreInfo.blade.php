@@ -21,7 +21,7 @@
             <li>Type of Treatment - <span>{{ $data->treatment->type }}</span></li>
             <li>Duration - <span>{{ $data->treatment->duration }} minutes</span></li>
             <li>Treatment Starts - <span>{{ $data->treatment_start_time->format('h:i a') }}</span></li>
-            <li>Treatment Finishes - <span>{{ $data->treatment_end_time }}</span></li>
+            <li>Treatment Finishes - <span>{{ $data->treatment_end_time->format('h:i a') }}</span></li>
             <li>Price - <span>£{{ $data->treatment->price }}</span></li>
         </ul>
     </div>
