@@ -1,8 +1,10 @@
 <?php
 
-/** @var \Illuminate\Database\Eloquent\Factory $factory */
 use App\Appointment;
-use Illuminate\Support\Str;
+use App\Client;
+use App\Treatment;
+
+/** @var \Illuminate\Database\Eloquent\Factory $factory */
 use Faker\Generator as Faker;
 
 /*
