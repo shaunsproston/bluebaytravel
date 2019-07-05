@@ -13,6 +13,7 @@
     </head>
     <body>
         <div class="container">
+            @include('layouts.messages')
             @yield('content')
         </div>
     </body>

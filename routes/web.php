@@ -19,3 +19,5 @@ Route::get('/appointments', 'Controller@data')->name('appointments');
 Route::get('/appointments/moreinfo/{appointment}', 'Controller@moreInfo');
 
 Route::get('/bookingForm', 'Controller@bookingForm');
+
+Route::resource('/bookings', 'BookingFormController');
