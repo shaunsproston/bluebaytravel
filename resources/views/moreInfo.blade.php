@@ -8,7 +8,7 @@
 </div>
 <hr>
 <div>
-    <h2>Customer Name - <span id="name">{{ $data->client->firstName .' '. $data->client->lastName }}</span></h2>
+    <h2>Customer Name - <span id="name">{{ $data->client->first_name .' '. $data->client->last_name }}</span></h2>
     <h4>Customer ID - <span id="type">{{ $data->client->id }}</span></h4>
     <h4>Booked in for <span id="type">{{$data->treatment->type }}</span> on <span id="type">{{ $data->treatment_start_time->format('l jS \\of F Y') }}</span></h4>
 </div>
@@ -35,7 +35,7 @@
                 <li>Contact Number - <span>{{ $data->client->tel }}</span></li>
                 <li>Address - </li>
                 <ul class="list-unstyled ml-5">
-                    <li><span>{{ $data->client->houseNumber .' '. $data->client->street }},</span></li>
+                    <li><span>{{ $data->client->house_number .' '. $data->client->street }},</span></li>
                     <li><span>{{ $data->client->town }},</span></li>
                     <li><span>{{ $data->client->county }},</span></li>
                     <li><span>{{ $data->client->postcode }}</span></li>

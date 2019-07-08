@@ -24,14 +24,14 @@ class AppointmentResource extends JsonResource
         $end_time = $appointment->treatment_end_time->format('h:i a');
 
         return [
-            'id'                   => $appointment->id,
-            'client_id'            => $appointment->client_id,
-            'firstName'            => $client->firstName,
-            'lastName'             => $client->lastName,
+            'id'                   => $this->id,
+            'client_id'            => $this->client_id,
+            'first_name'           => $client->first_name,
+            'last_name'            => $client->last_name,
             'tel'                  => $client->tel,
             'email'                => $client->email,
             'address'              => [
-                'houseNumber'          => $client->houseNumber,
+                'house_number'         => $client->house_number,
                 'street'               => $client->street,
                 'town'                 => $client->town,
                 'county'               => $client->county,

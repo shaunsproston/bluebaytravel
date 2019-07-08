@@ -40,10 +40,11 @@ class Appointment extends Model
         return $this->belongsTo(Treatment::class);
     }
 
+    /**
+     * @return Carbon\Carbon
+     */
     public function getTreatmentEndTimeAttribute(): Carbon
     {
         return $this->treatment_start_time->addMinutes($this->treatment->duration);
     }
-
-
 }

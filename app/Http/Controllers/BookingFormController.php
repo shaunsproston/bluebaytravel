@@ -3,10 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
 use App\Appointment;
 use App\Client;
 use App\Treatment;
-use View;
+use Illuminate\Support\Facades\View;
 
 class BookingFormController extends Controller
 {
@@ -40,39 +41,38 @@ class BookingFormController extends Controller
     {
         $this->validate($request, [
             'treatmentType' => 'required',
-             'treatmentDate' => 'required',
-             'treatmentTime' => 'required',
-            'firstName' => 'required',
-            'lastName' => 'required',
-            'email' => 'required',
-            'tel' => 'required',
-            'houseNumber' => 'required',
-            'street' => 'required',
-            'town' => 'required',
-            'county' => 'required',
-            'postcode' => 'required',
+            'treatmentDate' => 'required',
+            'treatmentTime' => 'required',
+            'first_name'    => 'required',
+            'last_name'     => 'required',
+            'email'         => 'required',
+            'tel'           => 'required',
+            'house_number'  => 'required',
+            'street'        => 'required',
+            'town'          => 'required',
+            'county'        => 'required',
+            'postcode'      => 'required',
         ]);
 
-        $client = new Client;
-        $client->firstName = $request->input('firstName');
-        $client->lastName = $request->input('lastName');
-        $client->email = $request->input('email');
-        $client->tel = $request->input('tel');
-        $client->houseNumber = $request->input('houseNumber');
-        $client->street = $request->input('street');
-        $client->town = $request->input('town');
-        $client->county = $request->input('county');
-        $client->postcode = $request->input('postcode');
-        $client->save();
+        $client = Client::create([
+            'first_name'   => $request->input('first_name'),
+            'last_name'    => $request->input('last_name'),
+            'email'        => $request->input('email'),
+            'tel'          => $request->input('tel'),
+            'house_number' => $request->input('house_number'),
+            'street'       => $request->input('street'),
+            'town'         => $request->input('town'),
+            'county'       => $request->input('county'),
+            'postcode'     => $request->input('postcode'),
+        ]);
 
-        $appointment = new Appointment;
-        $appointment->treatment_id = $request->input('treatmentType');
-        $appointment->client_id = $client->id;
-        $appointment->treatment_start_time = $request->input('treatmentDate') . ' ' . $request->input('treatmentTime') . ':00';
-        $appointment->save();
+        $appointment = Appointment::create([
+           'treatment_id'         => $request->input('treatmentType'),
+           'client_id'            => $client->id,
+           'treatment_start_time' => $request->input('treatmentDate') . ' ' . $request->input('treatmentTime') . ':00',
+        ]);
 
-        return redirect('/bookings/create')->with('success', 'Booking Successful');
-
+        return Redirect::route('bookings.create')->with('success', 'Booking Successful');
     }
 
 

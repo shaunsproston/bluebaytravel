@@ -11,7 +11,7 @@
                 <th class="more-info"></th>
             </tr>
             <tr v-for="(item, index) in $data.appointments" :key="index">
-                <td> {{ item.firstName +' '+ item.lastName }} </td>
+                <td> {{ item.first_name +' '+ item.last_name }} </td>
                 <td> {{ item.type }} </td>
                 <td> {{ item.date }} </td>
                 <td> {{ item.treatment_start_time }} </td>

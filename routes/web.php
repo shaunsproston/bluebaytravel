@@ -14,10 +14,11 @@
 
 Route::get('/', 'Controller@index')->name('home');
 
-Route::get('/appointments', 'Controller@data')->name('appointments');
-
-Route::get('/appointments/moreinfo/{appointment}', 'Controller@moreInfo');
-
 Route::get('/bookingForm', 'Controller@bookingForm');
 
-Route::resource('/bookings', 'BookingFormController');
+Route::resource('bookings', 'BookingFormController');
+
+Route::prefix('appointments')->group(function () {
+    Route::get('/', 'Controller@data')->name('appointments');
+    Route::get('/moreinfo/{appointment}', 'Controller@moreInfo');
+});

@@ -8,10 +8,6 @@ use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Support\Collection;
 use App\Appointment;
-use App\Client;
-use App\Treatment;
-use App\Http\Resources\AppointmentResource;
-use Illuminate\Http\Request;
 use View;
 
 class Controller extends BaseController

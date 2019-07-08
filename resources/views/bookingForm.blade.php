@@ -44,12 +44,12 @@
         <hr>
         <h3>Personal details</h3>
         <div class="form-inline m-3">
-            <label class="control-label col-sm-3" for="firstName">First Name:</label>
-            <input type="text" class="form-control" name="firstName">
+            <label class="control-label col-sm-3" for="first_name">First Name:</label>
+            <input type="text" class="form-control" name="first_name">
         </div>
         <div class="form-inline m-3">
-            <label class="control-label col-sm-3" for="lastName">Last Name:</label>
-            <input type="text" class="form-control" name="lastName">
+            <label class="control-label col-sm-3" for="last_name">Last Name:</label>
+            <input type="text" class="form-control" name="last_name">
         </div>
         <div class="form-inline m-3">
             <label class="control-label col-sm-3" for="email">Email:</label>
@@ -62,8 +62,8 @@
         <hr>
         <h3>Address</h3>
         <div class="form-inline m-3">
-            <label class="control-label col-sm-3" for="houseNumber">House Name / Number:</label>
-            <input type="text" class="form-control" name="houseNumber">
+            <label class="control-label col-sm-3" for="house_number">House Name / Number:</label>
+            <input type="text" class="form-control" name="house_number">
         </div>
         <div class="form-inline m-3">
                 <label class="control-label col-sm-3" for="street">Street Name:</label>

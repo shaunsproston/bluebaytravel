@@ -19,11 +19,11 @@ use Faker\Generator as Faker;
 
 $factory->define(Client::class, function (Faker $faker) {
     return [
-        'lastName'           => $faker->lastName,
-        'firstName'          => $faker->firstName,
+        'last_name'          => $faker->lastName,
+        'first_name'         => $faker->firstName,
         'tel'                => $faker->phoneNumber,
         'email'              => $faker->email,
-        'houseNumber'        => $faker->buildingNumber,
+        'house_number'       => $faker->buildingNumber,
         'street'             => $faker->streetName,
         'town'               => $faker->city,
         'county'             => $faker->county,
