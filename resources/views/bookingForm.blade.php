@@ -45,41 +45,41 @@
         <h3>Personal details</h3>
         <div class="form-inline m-3">
             <label class="control-label col-sm-3" for="first_name">First Name:</label>
-            <input type="text" class="form-control" name="first_name">
+            <input type="text" class="form-control" name="first_name" value="{{ old('first_name') }}" required>
         </div>
         <div class="form-inline m-3">
             <label class="control-label col-sm-3" for="last_name">Last Name:</label>
-            <input type="text" class="form-control" name="last_name">
+            <input type="text" class="form-control" name="last_name" value="{{ old('last_name') }}" required>
         </div>
         <div class="form-inline m-3">
             <label class="control-label col-sm-3" for="email">Email:</label>
-            <input type="email" class="form-control" name="email">
+            <input type="email" class="form-control" name="email" value="{{ old('email') }}" required>
         </div>
         <div class="form-inline m-3">
             <label class="control-label col-sm-3" for="tel">Telephone Number:</label>
-            <input type="tel" class="form-control" name="tel">
+            <input type="tel" class="form-control" name="tel" value="{{ old('tel') }}" required>
         </div>
         <hr>
         <h3>Address</h3>
         <div class="form-inline m-3">
             <label class="control-label col-sm-3" for="house_number">House Name / Number:</label>
-            <input type="text" class="form-control" name="house_number">
+            <input type="text" class="form-control" name="house_number" value="{{ old('house_number') }}" required>
         </div>
         <div class="form-inline m-3">
                 <label class="control-label col-sm-3" for="street">Street Name:</label>
-                <input type="text" class="form-control" name="street">
+                <input type="text" class="form-control" name="street" value="{{ old('street') }}" required>
             </div>
         <div class="form-inline m-3">
             <label class="control-label col-sm-3" for="town">Town / City:</label>
-            <input type="text" class="form-control" name="town">
+            <input type="text" class="form-control" name="town" value="{{ old('town') }}" required>
         </div>
         <div class="form-inline m-3">
             <label class="control-label col-sm-3" for="county">County / State:</label>
-            <input type="text" class="form-control" name="county">
+            <input type="text" class="form-control" name="county" value="{{ old('county') }}" required>
         </div>
         <div class="form-inline m-3">
             <label class="control-label col-sm-3" for="postcode">Postcode / Zipcode:</label>
-            <input type="text" class="form-control"name="postcode">
+            <input type="text" class="form-control"name="postcode" value="{{ old('postcode') }}" required>
         </div>
         <hr>
         <div class="form-inline m-3">

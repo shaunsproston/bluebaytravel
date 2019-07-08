@@ -45,7 +45,7 @@ class BookingFormController extends Controller
             'treatmentTime' => 'required',
             'first_name'    => 'required',
             'last_name'     => 'required',
-            'email'         => 'required',
+            'email'         => 'required|email',
             'tel'           => 'required',
             'house_number'  => 'required',
             'street'        => 'required',
@@ -74,7 +74,6 @@ class BookingFormController extends Controller
 
         return Redirect::route('bookings.create')->with('success', 'Booking Successful');
     }
-
 
     /**
      * Display the specified resource.
