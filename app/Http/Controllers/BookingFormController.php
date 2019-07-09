@@ -83,7 +83,7 @@ class BookingFormController extends Controller
      */
     public function show($id)
     {
-        //
+        return View::make('editform');
     }
 
     /**
@@ -94,7 +94,7 @@ class BookingFormController extends Controller
      */
     public function edit($id)
     {
-        //
+        // 
     }
 
     /**

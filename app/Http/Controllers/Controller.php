@@ -8,7 +8,7 @@ use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Support\Collection;
 use App\Appointment;
-use View;
+use Illuminate\Support\Facades\View;
 
 class Controller extends BaseController
 {
@@ -24,15 +24,9 @@ class Controller extends BaseController
         return View::make('data');
     }
 
-    public function bookingForm()
-    {
-        return View::make('bookingform')->withTreatments(Treatment::all());
-    }
-
     public function moreInfo(Appointment $appointment)
     {   
         return View::make('moreinfo')
             ->withData($appointment);
     }
-
 }
