@@ -6,7 +6,7 @@
 </div>
 <hr>
 <div class="container">
-    <a href="{{ route('home') }}"><button type="button" class="btn btn-info">Back</button></a>
+    <a href="{{ route('bookings.index') }}"><button type="button" class="btn btn-info">Back</button></a>
 </div>
 <hr>
 <div class="container">

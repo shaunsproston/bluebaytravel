@@ -14,19 +14,19 @@ class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
-    public function index()
-    {   
-        return View::make('index');
-    }
+    // public function index()
+    // {   
+    //     return View::make('index');
+    // }
 
-    public function data()
-    {   
-        return View::make('data');
-    }
+    // public function data()
+    // {   
+    //     return View::make('data');
+    // }
 
-    public function moreInfo(Appointment $appointment)
-    {   
-        return View::make('moreinfo')
-            ->withData($appointment);
-    }
+    // public function moreInfo(Appointment $appointment)
+    // {   
+    //     return View::make('moreinfo')
+    //         ->withData($appointment);
+    // }
 }

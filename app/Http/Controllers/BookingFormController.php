@@ -2,6 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Foundation\Bus\DispatchesJobs;
+use Illuminate\Routing\Controller as BaseController;
+use Illuminate\Foundation\Validation\ValidatesRequests;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
+use Illuminate\Support\Collection;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use App\Appointment;
@@ -11,6 +16,8 @@ use Illuminate\Support\Facades\View;
 
 class BookingFormController extends Controller
 {
+    use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
+
     /**
      * Display a listing of the resource.
      *
@@ -18,7 +25,7 @@ class BookingFormController extends Controller
      */
     public function index()
     {
-        // return View::make('bookingform')->withTreatments(Treatment::all());
+        return View::make('index');
     }
 
     /**
@@ -81,9 +88,10 @@ class BookingFormController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
-    {
-        return View::make('editform');
+    public function show(Appointment $appointment)
+    {   
+        return View::make('moreInfo')
+            ->withData($appointment);
     }
 
     /**
@@ -92,9 +100,11 @@ class BookingFormController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Appointment $appointment)
     {
-        // 
+        return View::make('editform')
+                   ->withTreatments(Treatment::all())
+                   ->withAppointment($appointment);
     }
 
     /**

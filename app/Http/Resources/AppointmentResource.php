@@ -20,8 +20,8 @@ class AppointmentResource extends JsonResource
         $treatment = $appointment->treatment;
         
         $date = $appointment->treatment_start_time->toFormattedDateString();
-        $start_time = $appointment->treatment_start_time->format('h:i a');
-        $end_time = $appointment->treatment_end_time->format('h:i a');
+        $start_time = $appointment->treatment_start_time->format('H:i');
+        $end_time = $appointment->treatment_end_time->format('H:i');
 
         return [
             'id'                   => $this->id,

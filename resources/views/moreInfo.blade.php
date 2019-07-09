@@ -3,8 +3,9 @@
 @section('content')
 <div class="container">
     <br>
-<a href="{{ route('appointments') }}"><button type="button" class="btn btn-info">Back</button></a>
-    <a href="editForm/#"><button type="button" class="btn btn-info">Edit Appointment</button></a>
+    <a href="{{ route('bookings.index') }}"><button type="button" class="btn btn-info">Back</button></a>
+    <a href="/bookings/{{ $data->id }}/edit"><button type="button" class="btn btn-info">Edit Appointment</button></a>
+    <a href="#"><button type="button" class="btn btn-danger">Remove Appointment</button></a>
 </div>
 <hr>
 <div>
@@ -28,19 +29,19 @@
 </div>
 <br>
 <div class="card bg-info text-white" style="width:500px">
-        <div class="card-body">
-            <h5>Contact Details</h5>
-            <ul class="list-unstyled">
-                <li>Email - <span>{{ $data->client->email }}</span></li>
-                <li>Contact Number - <span>{{ $data->client->tel }}</span></li>
-                <li>Address - </li>
-                <ul class="list-unstyled ml-5">
-                    <li><span>{{ $data->client->house_number .' '. $data->client->street }},</span></li>
-                    <li><span>{{ $data->client->town }},</span></li>
-                    <li><span>{{ $data->client->county }},</span></li>
-                    <li><span>{{ $data->client->postcode }}</span></li>
-                </ul>
+    <div class="card-body">
+        <h5>Contact Details</h5>
+        <ul class="list-unstyled">
+            <li>Email - <span>{{ $data->client->email }}</span></li>
+            <li>Contact Number - <span>{{ $data->client->tel }}</span></li>
+            <li>Address - </li>
+            <ul class="list-unstyled ml-5">
+                <li><span>{{ $data->client->house_number .' '. $data->client->street }},</span></li>
+                <li><span>{{ $data->client->town }},</span></li>
+                <li><span>{{ $data->client->county }},</span></li>
+                <li><span>{{ $data->client->postcode }}</span></li>
             </ul>
-        </div>
+        </ul>
     </div>
+</div>
 @endsection
