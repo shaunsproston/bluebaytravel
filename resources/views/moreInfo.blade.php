@@ -4,7 +4,7 @@
 <div class="container">
     <br>
 <a href="{{ route('appointments') }}"><button type="button" class="btn btn-info">Back</button></a>
-    <a href="#"><button type="button" class="btn btn-info">Edit Appointment</button></a>
+    <a href="editForm/#"><button type="button" class="btn btn-info">Edit Appointment</button></a>
 </div>
 <hr>
 <div>
