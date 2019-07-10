@@ -5,7 +5,7 @@
     <br>
     <a href="{{ route('bookings.index') }}"><button type="button" class="btn btn-info">Back</button></a>
     <a href="/bookings/{{ $data->id }}/edit"><button type="button" class="btn btn-info">Edit Appointment</button></a>
-    <a href="#"><button type="button" class="btn btn-danger">Remove Appointment</button></a>
+    <a href="/bookings/{{ $data->id }}/destroy"><button type="button" class="btn btn-danger float-right">Remove Appointment</button></a>
 </div>
 <hr>
 <div>
@@ -44,4 +44,11 @@
         </ul>
     </div>
 </div>
+{{-- <div class="alert alert-danger position-absolute remove-warning">
+    <h3>Are you sure you want to remove this booking?</h3>
+    <div>
+        <a href="#"><button type="button" class="btn btn-success float-left">Confirm</button></a>
+        <a href="#"><button type="button" class="btn btn-danger float-right">Cancel</button></a>
+    </div>
+</div> --}}
 @endsection

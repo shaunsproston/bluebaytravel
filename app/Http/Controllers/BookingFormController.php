@@ -14,7 +14,7 @@ use App\Client;
 use App\Treatment;
 use Illuminate\Support\Facades\View;
 
-class BookingFormController extends Controller
+class BookingFormController extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
@@ -77,7 +77,7 @@ class BookingFormController extends Controller
            'treatment_id'         => $request->input('treatmentType'),
            'client_id'            => $client->id,
            'treatment_start_time' => $request->input('treatmentDate') . ' ' . $request->input('treatmentTime') . ':00',
-        ]);
+        ]);  
 
         return Redirect::route('bookings.create')->with('success', 'Booking Successful');
     }
@@ -114,9 +114,41 @@ class BookingFormController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Appointment $appointment)
     {
-        //
+        // $this->validate($request, [
+        //     'treatmentType' => 'required',
+        //     'treatmentDate' => 'required',
+        //     'treatmentTime' => 'required',
+        //     'first_name'    => 'required',
+        //     'last_name'     => 'required',
+        //     'email'         => 'required|email',
+        //     'tel'           => 'required',
+        //     'house_number'  => 'required',
+        //     'street'        => 'required',
+        //     'town'          => 'required',
+        //     'county'        => 'required',
+        //     'postcode'      => 'required',
+        // ]);
+
+        $client = $appointment->client->update([
+            'first_name'   => $request->input('first_name'),
+            'last_name'    => $request->input('last_name'),
+            'email'        => $request->input('email'),
+            'tel'          => $request->input('tel'),
+            'house_number' => $request->input('house_number'),
+            'street'       => $request->input('street'),
+            'town'         => $request->input('town'),
+            'county'       => $request->input('county'),
+            'postcode'     => $request->input('postcode'),
+        ]);
+        
+        $appointment =  $appointment->update([
+           'treatment_id'         => $request->input('treatmentType'),
+           'treatment_start_time' => $request->input('treatmentDate') . ' ' . $request->input('treatmentTime') . ':00',
+        ]);
+
+        return Redirect::route('bookings.update', ['appointment' => $appointment])->with('success', 'Booking Changed Successfully');
     }
 
     /**
@@ -125,8 +157,8 @@ class BookingFormController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Appointment $appointment)
     {
-        //
+        return 123;
     }
 }

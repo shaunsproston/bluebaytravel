@@ -10,13 +10,14 @@
 </div>
 <hr>
 <div class="container">
-    <form class="form-horizontal" action="/bookings" method="POST">
+    <form class="form-horizontal" action="/bookings/{{ $appointment->id }}" method="POST">
         @csrf
+        @method('PUT')
         <h3>Treatment details</h3>
         <div class="form-inline m-3">
             <label class="control-label col-sm-3" for="treatmentType">Select treatment:</label>
             <select class="form-control" name="treatmentType">
-                <option value="{{ $appointment->treatment->id }}" disabled selected hidden>{{ $appointment->treatment->type }}</option>
+                <option value="{{ $appointment->treatment->id }}">{{ $appointment->treatment->type }}</option>
                 @foreach($treatments as $treatment)
                 <option value="{{ $treatment->id }}">{{ $treatment->type }}</option>
                 @endforeach
@@ -30,15 +31,15 @@
         <div class="form-inline m-3">
                 <label class="control-label col-sm-3" for="treatmentTime">Select time slot:</label>
                 <select class="form-control" name="treatmentTime">
-                    <option value="" disabled selected hidden>{{ $appointment->treatment_start_time->format('H:i') }}</option>
-                    <option>09:00</option>
-                    <option>10:00</option>
-                    <option>11:00</option>
-                    <option>12:00</option>
-                    <option>13:00</option>
-                    <option>14:00</option>
-                    <option>15:00</option>
-                    <option>16:00</option>
+                    <option value="{{ old('first_name', $appointment->treatment_start_time->format('H:i')) }}">{{ $appointment->treatment_start_time->format('H:i') }}</option>
+                    <option value="09:00">09:00</option>
+                    <option value="10:00">10:00</option>
+                    <option value="11:00">11:00</option>
+                    <option value="12:00">12:00</option>
+                    <option value="13:00">13:00</option>
+                    <option value="14:00">14:00</option>
+                    <option value="15:00">15:00</option>
+                    <option value="16:00">16:00</option>
                 </select>
             </div>
         <hr>
