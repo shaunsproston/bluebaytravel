@@ -88,6 +88,14 @@
             <button type="submit" class="btn btn-info">Submit</button>
             </div>
         </div>
+        <div class="form-inline m-3">
+            <label class="control-label col-sm-3" for="test">Test input</label>
+            <input type="text" class="form-control" name="test" value="" required>
+        </div>
+    </form>
+    <form id="myForm">
+        First name: <input type="text" name="fname"><br>
+        Last name: <input type="text" name="lname"><br><br>
     </form>
 </div>
 @endsection

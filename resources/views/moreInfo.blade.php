@@ -5,9 +5,20 @@
     <br>
     <a href="{{ route('bookings.index') }}"><button type="button" class="btn btn-info">Back</button></a>
     <a href="/bookings/{{ $data->id }}/edit"><button type="button" class="btn btn-info">Edit Appointment</button></a>
-    <a href="/bookings/{{ $data->id }}/destroy"><button type="button" class="btn btn-danger float-right">Remove Appointment</button></a>
+    <button type="button" id="removeBtn" class="btn btn-danger float-right" onclick="javascript:showDiv();">Remove Appointment</button>
 </div>
 <hr>
+<div id="warningMsg" class="container alert alert-danger">
+    <h3>Are you sure you want to remove this booking?</h3>
+    <div>
+        <form action="/bookings/{{ $data->id }}" method="POST">
+            @csrf
+            @method('DELETE')
+            <button type="submit" class="btn btn-success">Confirm</button>
+            <button type="button" class="btn btn-danger" onclick="javascript:hideDiv();">Cancel</button>
+        </form>
+    </div>
+</div>
 <div>
     <h2>Customer Name - <span id="name">{{ $data->client->first_name .' '. $data->client->last_name }}</span></h2>
     <h4>Customer ID - <span id="type">{{ $data->client->id }}</span></h4>
@@ -44,11 +55,15 @@
         </ul>
     </div>
 </div>
-{{-- <div class="alert alert-danger position-absolute remove-warning">
-    <h3>Are you sure you want to remove this booking?</h3>
-    <div>
-        <a href="#"><button type="button" class="btn btn-success float-left">Confirm</button></a>
-        <a href="#"><button type="button" class="btn btn-danger float-right">Cancel</button></a>
-    </div>
-</div> --}}
+<script>
+    showDiv = ()=> {
+        console.log('clicked');
+        document.querySelector("#warningMsg").style.display = "inline-block";
+    };
+
+    hideDiv = ()=> {
+        console.log('clicked');
+        document.querySelector("#warningMsg").style.display = "none";
+    };
+</script>
 @endsection

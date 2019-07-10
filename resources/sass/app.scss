@@ -57,10 +57,19 @@ html, body {
 .m-b-md {
     margin-bottom: 30px;
 }
+
 h5{
     font-weight: 600;
 }
 span{
     color: navy;
     font-weight: 600;
+}
+#warningMsg {
+    text-align: center;
+    display: none;
+}
+#warningMsg .btn{
+    margin-left: 20px;
+    margin-right: 20px;
 }

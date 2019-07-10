@@ -159,6 +159,7 @@ class BookingFormController extends BaseController
      */
     public function destroy(Appointment $appointment)
     {
-        return 123;
+        $appointment->delete();
+        return Redirect::route('bookings.index')->with('success', 'Booking Successfully Removed');
     }
 }
