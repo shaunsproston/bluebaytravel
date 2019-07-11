@@ -79,7 +79,7 @@ class BookingFormController extends BaseController
            'treatment_start_time' => $request->input('treatmentDate') . ' ' . $request->input('treatmentTime') . ':00',
         ]);  
 
-        return Redirect::route('bookings.create')->with('success', 'Booking Successful');
+        return Redirect::route('bookings.index')->with('success', 'Booking Successful');
     }
 
     /**
@@ -131,7 +131,7 @@ class BookingFormController extends BaseController
         //     'postcode'      => 'required',
         // ]);
 
-        $client = $appointment->client->update([
+        $appointment->client->update([
             'first_name'   => $request->input('first_name'),
             'last_name'    => $request->input('last_name'),
             'email'        => $request->input('email'),
@@ -143,12 +143,12 @@ class BookingFormController extends BaseController
             'postcode'     => $request->input('postcode'),
         ]);
         
-        $appointment =  $appointment->update([
+        $appointment->update([
            'treatment_id'         => $request->input('treatmentType'),
            'treatment_start_time' => $request->input('treatmentDate') . ' ' . $request->input('treatmentTime') . ':00',
         ]);
 
-        return Redirect::route('bookings.update', ['appointment' => $appointment])->with('success', 'Booking Changed Successfully');
+        return Redirect::route('bookings.edit', ['appointment' => $appointment])->with('success', 'Booking Changed Successfully');
     }
 
     /**
