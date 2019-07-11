@@ -22,6 +22,5 @@ $factory->define(Appointment::class, function (Faker $faker) {
     return [
         'client_id'            => factory(Client::class)->create()->id,
         'treatment_id'         => factory(Treatment::class)->create()->id,
-        'treatment_start_time' => $faker->dateTime(),
     ];
 });

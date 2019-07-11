@@ -5,6 +5,7 @@ use App\Client;
 use Illuminate\Support\Str;
 use Faker\Generator as Faker;
 
+
 /*
 |--------------------------------------------------------------------------
 | Model Factories
@@ -18,9 +19,14 @@ use Faker\Generator as Faker;
 
 $factory->define(Client::class, function (Faker $faker) {
     return [
-        'name'      => $faker->name(),
-        'tel'       => $faker->phoneNumber,
-        'email'     => $faker->email,
-        'address'   => $faker->address,
+        'last_name'          => $faker->lastName,
+        'first_name'         => $faker->firstName,
+        'tel'                => $faker->phoneNumber,
+        'email'              => $faker->email,
+        'house_number'       => $faker->buildingNumber,
+        'street'             => $faker->streetName,
+        'town'               => $faker->city,
+        'county'             => $faker->county,
+        'postcode'           => $faker->postcode,
     ];
 });

@@ -12,4 +12,4 @@
 |
 */
 
-Route::get('/', 'Controller@index');
+Route::resource('bookings', 'BookingFormController')->parameters(['bookings' => 'appointment']);

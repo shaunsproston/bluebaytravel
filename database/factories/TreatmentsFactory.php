@@ -17,30 +17,9 @@ use Faker\Generator as Faker;
 */
 
 $factory->define(Treatment::class, function (Faker $faker) {
-    $i = rand(0, 3);
-    $type = [
-        [
-            'name'     => 'Full Body Massage',
-            'duration' => 60,
-            'price'    => 35,
-        ], [
-            'name'     => 'Back, Neck, Shoulder Massage',
-            'duration' => 30,
-            'price'    => 25,
-        ], [
-            'name'     => 'Foot Massage', 
-            'duration' => 30,
-            'price'    => 25,
-        ], [
-            'name'     => 'Indian Head Massage',
-            'duration' => 30,
-            'price'    => 25,
-        ],
-    ];
-
     return [
-        'type'      => $type[$i]['name'],
-        'duration'  => $type[$i]['duration'],
-        'price'     => $type[$i]['price'],
+        'name'     => 'Full Body Massage',
+        'duration' => 60,
+        'price'    => 35,
     ];
 });

@@ -13,10 +13,15 @@ class Client extends Model
      * @var string[]
      */
     protected $fillable = [
-        'name',
+        'last_name',
+        'first_name', 
         'tel',
         'email',
-        'address',
+        'house_number',
+        'street',
+        'town',
+        'county',
+        'postcode',
     ];
 
     /**
