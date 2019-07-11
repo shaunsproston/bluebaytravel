@@ -84,7 +84,7 @@
         <hr>
         <div class="form-inline m-3">
             <div class="col-sm-offset-2 col-sm-10">
-            <button type="submit" class="btn btn-info">Submit</button>
+            <button type="submit" class="btn btn-info">Confirm Booking</button>
             </div>
         </div>
     </form>

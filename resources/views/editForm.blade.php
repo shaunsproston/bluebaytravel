@@ -17,9 +17,8 @@
         <div class="form-inline m-3">
             <label class="control-label col-sm-3" for="treatmentType">Select treatment:</label>
             <select class="form-control" name="treatmentType">
-                <option value="{{ $appointment->treatment->id }}">{{ $appointment->treatment->type }}</option>
                 @foreach($treatments as $treatment)
-                <option value="{{ $treatment->id }}">{{ $treatment->type }}</option>
+                <option value="{{ $treatment->id }}" {{ $appointment->treatment->is($treatment) ? 'selected' : null }}>{{ $treatment->type }}</option>
                 @endforeach
             </select>
         </div>
@@ -28,20 +27,15 @@
             <label class="control-label col-sm-3"  for="treatmentDate">Select treatment date:</label>
             <input class="form-control" type="date" name="treatmentDate" min="{{ Carbon::now()->format('Y-m-d') }}" max="{{ Carbon::now()->addMonths(3)->format('Y-m-d') }}" value="{{ $appointment->treatment_start_time->format('Y-m-d') }}">
         </div>
+
         <div class="form-inline m-3">
-                <label class="control-label col-sm-3" for="treatmentTime">Select time slot:</label>
-                <select class="form-control" name="treatmentTime">
-                    <option value="{{ old('first_name', $appointment->treatment_start_time->format('H:i')) }}">{{ $appointment->treatment_start_time->format('H:i') }}</option>
-                    <option value="09:00">09:00</option>
-                    <option value="10:00">10:00</option>
-                    <option value="11:00">11:00</option>
-                    <option value="12:00">12:00</option>
-                    <option value="13:00">13:00</option>
-                    <option value="14:00">14:00</option>
-                    <option value="15:00">15:00</option>
-                    <option value="16:00">16:00</option>
-                </select>
-            </div>
+            <label class="control-label col-sm-3" for="treatmentTime">Select time slot:</label>
+            <select class="form-control" name="treatmentTime">
+                @foreach(config('constants.WORKING_HOURS') as $timeSlot)
+                <option value="{{ $timeSlot }}" {{ $appointment->treatment_start_time->is($timeSlot) ? 'selected' : null }}>{{ $timeSlot }}</option>
+                @endforeach
+            </select>
+        </div>
         <hr>
         <h3>Personal details</h3>
         <div class="form-inline m-3">
@@ -85,17 +79,9 @@
         <hr>
         <div class="form-inline m-3">
             <div class="col-sm-offset-2 col-sm-10">
-            <button type="submit" class="btn btn-info">Submit</button>
+            <button type="submit" class="btn btn-info">Confirm Changes</button>
             </div>
         </div>
-        <div class="form-inline m-3">
-            <label class="control-label col-sm-3" for="test">Test input</label>
-            <input type="text" class="form-control" name="test" value="" required>
-        </div>
-    </form>
-    <form id="myForm">
-        First name: <input type="text" name="fname"><br>
-        Last name: <input type="text" name="lname"><br><br>
     </form>
 </div>
 @endsection

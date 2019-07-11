@@ -44,7 +44,8 @@ class DatabaseSeeder extends Seeder
             ],
         ];
 
-        $workingHours = [9, 10, 11, 12, 13, 14, 15, 16];
+        // $workingHours = [9, 10, 11, 12, 13, 14, 15, 16];
+        $workingHours = config('constants.WORKING_HOURS');
 
         $treatments = Collection::make();
         foreach ($treatmentData as $data) {
