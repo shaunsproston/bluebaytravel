@@ -60,8 +60,8 @@ class BookingFormController extends BaseController
             'county'        => 'required',
             'postcode'      => 'required',
         ]);
-
-        $client = Client::create([
+        
+        $client = Client::firstOrCreate([
             'first_name'   => $request->input('first_name'),
             'last_name'    => $request->input('last_name'),
             'email'        => $request->input('email'),
