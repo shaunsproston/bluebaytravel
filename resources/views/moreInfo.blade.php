@@ -1,9 +1,19 @@
 @extends('layouts/app')
 
 @section('content')
+
+<moreinfo-component ></moreinfo-component>
+
+{{-- <div class="float-right">
+    <h4>Booked by User - <span id="name">{{ $data->user->name }}</span></h6>
+    <h6>User ID - <span id="type">{{ $data->user->id }}</span></h4>
+</div>
+<br>
+<br>
+<hr>
 <div class="container">
     <br>
-    <a href="{{ route('bookings.index') }}"><button type="button" class="btn btn-info">Back</button></a>
+    <a href="./"><button type="button" class="btn btn-info">Back</button></a>
     <a href="/bookings/{{ $data->id }}/edit"><button type="button" class="btn btn-info">Edit Appointment</button></a>
     <button type="button" id="removeBtn" class="btn btn-danger float-right" onclick="javascript:showDiv();">Remove Appointment</button>
 </div>
@@ -19,6 +29,7 @@
         </form>
     </div>
 </div>
+
 <div>
     <h2>Customer Name - <span id="name">{{ $data->client->first_name .' '. $data->client->last_name }}</span></h2>
     <h4>Customer ID - <span id="type">{{ $data->client->id }}</span></h4>
@@ -54,16 +65,14 @@
             </ul>
         </ul>
     </div>
-</div>
+</div> --}}
 <script>
-    showDiv = ()=> {
-        console.log('clicked');
-        document.querySelector("#warningMsg").style.display = "inline-block";
-    };
+    // showDiv = ()=> {
+    //     document.querySelector("#warningMsg").style.display = "inline-block";
+    // };
 
-    hideDiv = ()=> {
-        console.log('clicked');
-        document.querySelector("#warningMsg").style.display = "none";
-    };
+    // hideDiv = ()=> {
+    //     document.querySelector("#warningMsg").style.display = "none";
+    // };
 </script>
 @endsection
