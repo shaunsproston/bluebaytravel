@@ -11,5 +11,11 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+Auth::routes();
+
+// Route::get('/', 'HomeController@index')->name('home');
+
+/// Need to group so is authenticated
+
 
 Route::resource('bookings', 'BookingFormController')->parameters(['bookings' => 'appointment']);
