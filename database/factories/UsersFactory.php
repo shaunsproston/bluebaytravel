@@ -1,7 +1,7 @@
 <?php
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
-use App\Appointment;
+use App\User;
 use Illuminate\Support\Str;
 use Faker\Generator as Faker;
 
@@ -16,10 +16,10 @@ use Faker\Generator as Faker;
 |
 */
 
-$factory->define(Appointment::class, function (Faker $faker) {
+$factory->define(Treatment::class, function (Faker $faker) {
     return [
-        'user_id'              => factory(User::class)->create()->id,
-        'client_id'            => factory(Client::class)->create()->id,
-        'treatment_id'         => factory(Treatment::class)->create()->id,
+        'name'     => $faker->username,
+        'email'    => $faker->email,
+        'password' => $faker->password,
     ];
 });

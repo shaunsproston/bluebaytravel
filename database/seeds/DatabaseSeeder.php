@@ -3,6 +3,7 @@
 use App\Client;
 use App\Appointment;
 use App\Treatment;
+use App\User;
 use Carbon\Carbon;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Arr;
@@ -23,6 +24,7 @@ class DatabaseSeeder extends Seeder
         Appointment::truncate();
         Client::truncate();
         Treatment::truncate();
+        User::truncate();
 
         $treatmentData = [
             [
@@ -56,12 +58,13 @@ class DatabaseSeeder extends Seeder
             ]));
         }
 
-        factory(Client::class, 10)->create()->each(function ($client) use ($treatments, $workingHours) {
+        factory(Client::class, 5)->create()->each(function ($client) use ($treatments, $workingHours) {
             for ($i = 1; $i <= 4; $i++) {
                 $treatment = $treatments->random();
                 $randomHour = Arr::random($workingHours);
                 
                 Appointment::create([
+                    'user_id'              => $client->id,
                     'client_id'            => $client->id,
                     'treatment_id'         => $treatment->id,
                     'treatment_start_time' => Carbon::now()->setHour($randomHour)->addMonths($i)->toDateString().$randomHour.':00:00',

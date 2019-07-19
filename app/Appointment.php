@@ -4,7 +4,6 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Relations\HasOne;
 use Carbon\Carbon;
 
 class Appointment extends Model
@@ -15,6 +14,7 @@ class Appointment extends Model
      * @var string[]
      */
     protected $fillable = [
+        'user_id',
         'client_id',
         'treatment_id',
         'treatment_start_time',
@@ -30,6 +30,14 @@ class Appointment extends Model
     public function client(): BelongsTo
     {
         return $this->belongsTo(Client::class);
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function user(): BelongsTo
+    {
+        return $this->belongsTo(User::class);
     }
 
     /**
