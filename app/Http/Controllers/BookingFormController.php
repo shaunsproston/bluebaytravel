@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Foundation\Bus\DispatchesJobs;
-use Illuminate\Routing\Controller as BaseController;
-use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Support\Collection;
+use Illuminate\Routing\Controller as BaseController;
+use Illuminate\Foundation\Bus\DispatchesJobs;
+use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use App\Appointment;
@@ -19,13 +19,26 @@ class BookingFormController extends BaseController
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
     /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        return View::make('index');
+        $authUser = auth()->user()->id;
+        // dd($authUser);
+        
+        return View::make('home')->withUserId($authUser);
     }
 
     /**
@@ -49,7 +62,7 @@ class BookingFormController extends BaseController
         $this->validate($request, [
             'treatmentType' => 'required',
             'treatmentDate' => 'required',
-            'treatmentTime' => 'required',
+            // 'treatmentTime' => 'required',
             'first_name'    => 'required',
             'last_name'     => 'required',
             'email'         => 'required|email',
@@ -74,12 +87,13 @@ class BookingFormController extends BaseController
         ]);
 
         $appointment = Appointment::create([
+           'user_id'              => auth()->id(), 
            'treatment_id'         => $request->input('treatmentType'),
            'client_id'            => $client->id,
            'treatment_start_time' => $request->input('treatmentDate') . ' ' . $request->input('treatmentTime') . ':00',
         ]);  
 
-        return Redirect::route('bookings.index')->with('success', 'Booking Successful');
+        return Redirect::route('bookings.create')->with('success', 'Booking Successful');
     }
 
     /**
@@ -147,7 +161,7 @@ class BookingFormController extends BaseController
            'treatment_id'         => $request->input('treatmentType'),
            'treatment_start_time' => $request->input('treatmentDate') . ' ' . $request->input('treatmentTime') . ':00',
         ]);
-
+        // dd($request);
         return Redirect::route('bookings.edit', ['appointment' => $appointment])->with('success', 'Booking Changed Successfully');
     }
 
