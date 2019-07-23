@@ -14,9 +14,6 @@ class TreatmentResource extends JsonResource
      */
     public function toArray($request)
     {
-
-        $treatments = $this->resource;
-        
         return [
             'id'   => $this->id,
             'type' => $this->type,

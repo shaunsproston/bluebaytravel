@@ -10,6 +10,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 class User extends Authenticatable
 {
     use Notifiable;
+
     /**
      * The attributes that are mass assignable.
      *
@@ -20,6 +21,7 @@ class User extends Authenticatable
         'email',
         'password',
     ];
+
     /**
      * The attributes that should be hidden for arrays.
      *
@@ -29,6 +31,7 @@ class User extends Authenticatable
         'password',
         'remember_token',
     ];
+
     /**
      * The attributes that should be cast to native types.
      *
@@ -45,6 +48,7 @@ class User extends Authenticatable
     {
         return $this->hasMany(Appointment::class);
     }
+
     /**
      * @return \Illuminate\Database\Eloquent\Relations\hasMany
      */
@@ -52,6 +56,7 @@ class User extends Authenticatable
     {
         return $this->hasMany(Client::class);
     }
+
     /**
      * @return \Illuminate\Database\Eloquent\Relations\hasMany
      */

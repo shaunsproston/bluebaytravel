@@ -2,9 +2,8 @@
 
 namespace App\Http\Composers;
 
-use Illuminate\View\View;
 use App\Appointment;
-
+use Illuminate\View\View;
 
 class MoreInfoComposer
 {

@@ -17,16 +17,6 @@ class MoreInfoComposerProvider extends ServiceProvider
         $this->composeMoreInfo();
     }
 
-    /**
-     * Bootstrap services.
-     *
-     * @return void
-     */
-    public function boot()
-    {
-        //
-    }
-
     public function composeMoreInfo() 
     {
         View::composer('layouts.app', 'App\Http\Composers\MoreInfoComposer');

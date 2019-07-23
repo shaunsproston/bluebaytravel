@@ -36,8 +36,6 @@ class BookingFormController extends BaseController
     public function index()
     {
         $authUser = auth()->user()->id;
-        // dd($authUser);
-        
         return View::make('home')->withUserId($authUser);
     }
 
@@ -62,7 +60,7 @@ class BookingFormController extends BaseController
         $this->validate($request, [
             'treatmentType' => 'required',
             'treatmentDate' => 'required',
-            // 'treatmentTime' => 'required',
+            'treatmentTime' => 'required',
             'first_name'    => 'required',
             'last_name'     => 'required',
             'email'         => 'required|email',
@@ -105,7 +103,7 @@ class BookingFormController extends BaseController
     public function show(Appointment $appointment)
     {   
         return View::make('moreInfo')
-            ->withData($appointment);
+            ->withAppointment($appointment);
     }
 
     /**
@@ -130,20 +128,20 @@ class BookingFormController extends BaseController
      */
     public function update(Request $request, Appointment $appointment)
     {
-        // $this->validate($request, [
-        //     'treatmentType' => 'required',
-        //     'treatmentDate' => 'required',
-        //     'treatmentTime' => 'required',
-        //     'first_name'    => 'required',
-        //     'last_name'     => 'required',
-        //     'email'         => 'required|email',
-        //     'tel'           => 'required',
-        //     'house_number'  => 'required',
-        //     'street'        => 'required',
-        //     'town'          => 'required',
-        //     'county'        => 'required',
-        //     'postcode'      => 'required',
-        // ]);
+        $this->validate($request, [
+            'treatmentType' => 'required',
+            'treatmentDate' => 'required',
+            'treatmentTime' => 'required',
+            'first_name'    => 'required',
+            'last_name'     => 'required',
+            'email'         => 'required|email',
+            'tel'           => 'required',
+            'house_number'  => 'required',
+            'street'        => 'required',
+            'town'          => 'required',
+            'county'        => 'required',
+            'postcode'      => 'required',
+        ]);
 
         $appointment->client->update([
             'first_name'   => $request->input('first_name'),
@@ -161,7 +159,7 @@ class BookingFormController extends BaseController
            'treatment_id'         => $request->input('treatmentType'),
            'treatment_start_time' => $request->input('treatmentDate') . ' ' . $request->input('treatmentTime') . ':00',
         ]);
-        // dd($request);
+
         return Redirect::route('bookings.edit', ['appointment' => $appointment])->with('success', 'Booking Changed Successfully');
     }
 

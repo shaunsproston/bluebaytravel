@@ -21,12 +21,14 @@ use Illuminate\Routing\Router;
 */
 
 // Route::middleware('auth:api')->group(function (Request $request) {
-//     Route::get('/data', function(){
-//         return Appointment::all()->load(['client', 'treatment']);
-//     });
+
 // Route::middleware('auth')->group(function (Router $router) {
 
-    Route::get('/users/{user}/appointments', function(User $user){
+    Route::get('/users/{user}/appointments/{appointment?}', function(User $user, Appointment $appointment = null){
+        if ($appointment) {
+            return new AppointmentResource($appointment);
+        }
+
         return AppointmentResource::collection($user->appointments);
     });
 
