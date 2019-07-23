@@ -3,19 +3,40 @@
         <div class="container">
             <br>
             <a href="./"><button type="button" class="btn btn-info">Back</button></a>
-            <a href="/bookings/#/edit"><button type="button" class="btn btn-info">Edit Appointment</button></a>
-            <button type="button" id="removeBtn" class="btn btn-danger float-right" onclick="javascript:showDiv();">Remove Appointment</button>
+            <a :href="`/bookings/${appointmentId}/edit`"><button type="button" class="btn btn-info">Edit Appointment</button></a>
+            <button type="button" id="removeBtn" class="btn btn-danger float-right" @click="showBtnFunc()">Remove Appointment</button>
         </div>
         <hr>
-        <moreinfo-btnshidden></moreinfo-btnshidden>
     </div>
 </template>
 <script>
-    showDiv = ()=> {
-        document.querySelector("#warningMsg").style.display = "inline-block";
-    };
+import { EventBus } from '../helpers/event-bus.js';
 
-    hideDiv = ()=> {
-        document.querySelector("#warningMsg").style.display = "none";
-    };
+export default {
+    props: {
+        user: {
+            default: null,
+            type: Number
+        },
+        appointmentId: {
+            default: null,
+            type: Number
+        }
+    },
+    data() {
+        return {
+            showBtn: false
+        }
+    },
+    methods: {
+        showBtnFunc() {
+            if (this.showBtn == true){
+                this.showBtn = false;
+            } else {
+                this.showBtn = true;
+            }
+            EventBus.$emit('Show Button State', this.showBtn);
+        }
+    }
+}
 </script>

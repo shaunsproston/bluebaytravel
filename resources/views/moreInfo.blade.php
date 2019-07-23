@@ -2,7 +2,7 @@
 
 @section('content')
 
-<moreinfo-component ></moreinfo-component>
+<moreinfo-component :appointment-id="{{ $appointment->id }}" :user="{{ $appointment->user_id }}"></moreinfo-component>
 
 {{-- <div class="float-right">
     <h4>Booked by User - <span id="name">{{ $data->user->name }}</span></h6>
@@ -66,13 +66,13 @@
         </ul>
     </div>
 </div> --}}
-<script>
-    // showDiv = ()=> {
-    //     document.querySelector("#warningMsg").style.display = "inline-block";
-    // };
+{{-- <script>
+    showDiv = ()=> {
+        document.querySelector("#warningMsg").style.display = "inline-block";
+    };
 
-    // hideDiv = ()=> {
-    //     document.querySelector("#warningMsg").style.display = "none";
-    // };
-</script>
+    hideDiv = ()=> {
+        document.querySelector("#warningMsg").style.display = "none";
+    };
+</script> --}}
 @endsection

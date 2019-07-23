@@ -6,7 +6,7 @@
         <td>{{ appointment.treatment_start_time }}</td>
         <td>{{ appointment.duration }} minutes</td>
         <td>{{ appointment.treatment_end_time }}</td>
-        <td class="more-info"><a :href="appointment.id"><button type="button" class="btn btn-info">more info</button></a></td>
+        <td class="more-info"><a :href="`/bookings/${appointment.id}`"><button type="button" class="btn btn-info">more info</button></a></td>
     </tr>
 </template>
 

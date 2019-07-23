@@ -1,7 +1,8 @@
 @extends('layouts/app')
 
 @section('content')
-<div class="container h5 p-5">
+    <form-component :appointment-id="{{ $appointment->id }}" :user="{{ $appointment->user_id }}"></form-component>
+{{-- <div class="container h5 p-5">
     <h1>Edit Booking Details</h1>
 </div>
 <hr>
@@ -83,5 +84,5 @@
             </div>
         </div>
     </form>
-</div>
+</div> --}}
 @endsection

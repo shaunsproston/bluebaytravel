@@ -1,5 +1,8 @@
 <template>
-    <div id="test">
+    <div v-if="!appointment">
+        LOADING!!!!!
+    </div>
+    <div v-else id="test">
         <div class="container h5 p-5">
             <h1>{{ title }}</h1>
         </div>
@@ -33,41 +36,41 @@
                 <h3>Personal details</h3>
                 <div class="form-inline m-3">
                     <label class="control-label col-sm-3" for="first_name">First Name:</label>
-                    <input type="text" class="form-control" name="first_name" value="" required>
+                    <input type="text" class="form-control" name="first_name" :value="`${$data.appointment.first_name}`" required>
                 </div>
                 <div class="form-inline m-3">
                     <label class="control-label col-sm-3" for="last_name">Last Name:</label>
-                    <input type="text" class="form-control" name="last_name" value="" required>
+                    <input type="text" class="form-control" name="last_name" :value="`${$data.appointment.last_name}`" required>
                 </div>
                 <div class="form-inline m-3">
                     <label class="control-label col-sm-3" for="email">Email:</label>
-                    <input type="email" class="form-control" name="email" value="" required>
+                    <input type="email" class="form-control" name="email" :value="`${$data.appointment.email}`" required>
                 </div>
                 <div class="form-inline m-3">
                     <label class="control-label col-sm-3" for="tel">Telephone Number:</label>
-                    <input type="tel" class="form-control" name="tel" value="" required>
+                    <input type="tel" class="form-control" name="tel" :value="`${$data.appointment.tel}`" required>
                 </div>
                 <hr>
                 <h3>Address</h3>
                 <div class="form-inline m-3">
                     <label class="control-label col-sm-3" for="house_number">House Name / Number:</label>
-                    <input type="text" class="form-control" name="house_number" value="" required>
+                    <input type="text" class="form-control" name="house_number" :value="`${$data.appointment.address.house_number}`" required>
                 </div>
                 <div class="form-inline m-3">
                         <label class="control-label col-sm-3" for="street">Street Name:</label>
-                        <input type="text" class="form-control" name="street" value="" required>
+                        <input type="text" class="form-control" name="street" :value="`${$data.appointment.address.street}`" required>
                     </div>
                 <div class="form-inline m-3">
                     <label class="control-label col-sm-3" for="town">Town / City:</label>
-                    <input type="text" class="form-control" name="town" value="" required>
+                    <input type="text" class="form-control" name="town" :value="`${$data.appointment.address.town}`" required>
                 </div>
                 <div class="form-inline m-3">
                     <label class="control-label col-sm-3" for="county">County / State:</label>
-                    <input type="text" class="form-control" name="county" value="" required>
+                    <input type="text" class="form-control" name="county" :value="`${$data.appointment.address.county}`" required>
                 </div>
                 <div class="form-inline m-3">
                     <label class="control-label col-sm-3" for="postcode">Postcode / Zipcode:</label>
-                    <input type="text" class="form-control" name="postcode" value="" required>
+                    <input type="text" class="form-control" name="postcode" :value="`${$data.appointment.address.postcode}`" required>
                 </div>
                 <hr>
                 <div class="form-inline m-3">
@@ -88,6 +91,11 @@
             user: {
                 default: null,
                 type: Number
+            },
+
+            appointmentId: {
+                default: null,
+                type: Number
             }
         },
         data() {
@@ -97,11 +105,23 @@
                 date: moment().utc().format("YYYY-MM-DD"),
                 datePlus3Months: moment().add(90, 'days').format("YYYY-MM-DD"),
                 treatments: [],
-                workingHours: []
+                workingHours: [],
+                appointment: {
+                    // address: {}
+                },
+                loaded: false 
             };
         },
         mounted () {
-            this.getFormData();
+            this.getFormData(); 
+            if(this.$props.appointmentId){
+                this.getAppointments();
+                this.title = 'Edit your Treatment';
+            }
+
+            this.$nextTick(() => {
+                this.$data.loaded = true;
+            });
         },
         methods: {
             async getFormData() {
@@ -111,6 +131,16 @@
                     
                     this.$data.treatments = treatments;
                     this.$data.workingHours = workingHours;
+                } catch (e) {
+                    console.log(e);
+                }
+            },
+            async getAppointments() {
+                try {
+                    const response = await window.axios.get(`/api/users/${this.$props.user}/appointments/${this.$props.appointmentId}`);
+                    const appointment = response.data.data;
+
+                    this.$data.appointment = appointment;
                 } catch (e) {
                     console.log(e);
                 }
