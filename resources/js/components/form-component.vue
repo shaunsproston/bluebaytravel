@@ -12,8 +12,9 @@
         </div>
         <hr>
         <div class="container">
-            <form class="form-horizontal" :action="homePath" :method="sendMethodType">
+            <form class="form-horizontal" :action="homePath" method="POST">
                 <input type="hidden" name="_token" :value="csrf">
+                <input type="hidden" name="_method" :value="sendMethodType">
                 <h3>Treatment details</h3>
                 <div class="form-inline m-3">
                     <label class="control-label col-sm-3" for="treatmentType">Select treatment:</label>
