@@ -1,18 +1,18 @@
 <template>
-    <div v-if="!appointment">
+    <div v-if="!loaded">
         LOADING!!!!!
     </div>
-    <div v-else id="test">
+    <div v-else>
         <div class="container h5 p-5">
             <h1>{{ title }}</h1>
         </div>
         <hr>
         <div class="container">
-            <a href="../bookings"><button type="button" class="btn btn-info">Back</button></a>
+            <a :href="homePath"><button type="button" class="btn btn-info">Back</button></a>
         </div>
         <hr>
         <div class="container">
-            <form class="form-horizontal" action="/bookings" method="POST">
+            <form class="form-horizontal" :action="homePath" :method="sendMethodType">
                 <input type="hidden" name="_token" :value="csrf">
                 <h3>Treatment details</h3>
                 <div class="form-inline m-3">
@@ -24,7 +24,7 @@
                 <div class="form-inline m-3">
                     <br>
                     <label class="control-label col-sm-3"  for="treatmentDate">Select treatment date:</label>
-                    <input class="form-control" type="date" name="treatmentDate" v-bind:min="date" v-bind:max="datePlus3Months">
+                    <input class="form-control" type="date" name="treatmentDate" :min="date" :max="datePlus3Months">
                 </div>
                 <div class="form-inline m-3">
                     <label class="control-label col-sm-3" for="treatmentTime">Select time slot:</label>
@@ -84,7 +84,8 @@
 </template>
 
 <script>
-    const moment = require('moment');
+import { loadavg } from 'os';
+import { dateFunction } from '../helpers/dateFormatter';
 
     export default {
         props: {
@@ -92,7 +93,6 @@
                 default: null,
                 type: Number
             },
-
             appointmentId: {
                 default: null,
                 type: Number
@@ -101,27 +101,54 @@
         data() {
             return {
                 csrf: document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
-                title: 'Book your Treatment',
-                date: moment().utc().format("YYYY-MM-DD"),
-                datePlus3Months: moment().add(90, 'days').format("YYYY-MM-DD"),
+                date: new Date().toISOString().substring(0,10),
+                datePlus3Months: dateFunction(),
                 treatments: [],
                 workingHours: [],
                 appointment: {
-                    // address: {}
+                    first_name: "",
+                    last_name: "",
+                    email: "",
+                    tel: "",
+                    address: {
+                        house_number: "",
+                        street: "",
+                        town: "",
+                        county: "",
+                        postcode: ""
+                    }
                 },
-                loaded: false 
+                loaded: false
             };
         },
         mounted () {
             this.getFormData(); 
             if(this.$props.appointmentId){
                 this.getAppointments();
-                this.title = 'Edit your Treatment';
             }
-
             this.$nextTick(() => {
                 this.$data.loaded = true;
             });
+        },
+        computed: {
+            title() {
+                if(this.$props.appointmentId){
+                    return "Edit your Treatment";
+                }
+                    return "Book your Treatment";
+            },
+            homePath() {
+                if(this.$props.appointmentId){
+                    return `/bookings/${this.$props.appointmentId}`;
+                }
+                    return "/bookings";
+            },
+            sendMethodType() {
+                if(this.$props.appointmentId){
+                    return "PUT";
+                }
+                return "POST";
+            }
         },
         methods: {
             async getFormData() {
