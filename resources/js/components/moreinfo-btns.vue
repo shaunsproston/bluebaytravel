@@ -23,19 +23,9 @@ export default {
             type: Number
         }
     },
-    data() {
-        return {
-            showBtn: false
-        }
-    },
     methods: {
         showBtnFunc() {
-            if (this.showBtn == true){
-                this.showBtn = false;
-            } else {
-                this.showBtn = true;
-            }
-            EventBus.$emit('Show Button State', this.showBtn);
+            EventBus.$emit('Show Button State');
         }
     }
 }

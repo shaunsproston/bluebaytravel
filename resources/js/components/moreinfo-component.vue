@@ -29,10 +29,7 @@ export default {
         };
     },
     created() {
-        EventBus.$on('Show Button State', showBtn => {
-            this.showBtn = showBtn;
-            console.log('test ' + this.showBtn);
-        });
+        EventBus.$on('Show Button State', () => this.showBtn = !this.showBtn);
     },
     mounted () {
         this.getAppointments();

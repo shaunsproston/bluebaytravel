@@ -3,7 +3,7 @@
        <div class="container alert alert-danger">
             <h3>Are you sure you want to remove this booking?</h3>
             <div>
-                <form :action="`/bookings/${appointment}`" method="POST">
+                <form :action="`/bookings/${appointmentId}`" method="POST">
                     <input type="hidden" name="_token" :value="csrf">
                     <input type="hidden" name="_method" value="DELETE">
                     <button type="submit" class="btn btn-success">Confirm</button>
@@ -34,12 +34,7 @@ export default {
     },
     methods: {
         showBtnFunc() {
-            if (this.showBtn == true){
-                this.showBtn = false;
-            } else {
-                this.showBtn = true;
-            }
-            EventBus.$emit('Show Button State', this.showBtn);
+            EventBus.$emit('Show Button State');
         }
     }
 }
