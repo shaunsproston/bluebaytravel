@@ -7,6 +7,7 @@ use App\Http\Controllers\AbstractController;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Support\Str;
 
 class RegisterController extends AbstractController
 {
@@ -63,11 +64,14 @@ class RegisterController extends AbstractController
      */
     protected function create(array $data)
     {
-        return User::create([
+        $user = User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
+            'api_token' => Str::random(60),
         ]);
+
+        dd($user);    
     }
 
     // protected function redirectPath()
