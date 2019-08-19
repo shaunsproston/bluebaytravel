@@ -55,7 +55,6 @@
                 type: Object
             }
         }
-        
     }
 </script>
 

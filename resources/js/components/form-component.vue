@@ -167,7 +167,6 @@ import { dateFunction } from '../helpers/dateFormatter';
                 try {
                     const response = await window.axios.get(`/api/users/${this.$props.user}/appointments/${this.$props.appointmentId}`);
                     const appointment = response.data.data;
-
                     this.$data.appointment = appointment;
                 } catch (e) {
                     console.log(e);

@@ -28,7 +28,6 @@ use Illuminate\Routing\Router;
         if ($appointment) {
             return new AppointmentResource($appointment);
         }
-
         return AppointmentResource::collection($user->appointments);
     });
 
@@ -39,6 +38,10 @@ use Illuminate\Routing\Router;
         ]];
     });
 
+    Route::delete('/users/{user}/appointments/{appointment?}', function(User $user, Appointment $appointment = null){
+        $appointment->delete();
+    });
+    
 // });
 
 // });
