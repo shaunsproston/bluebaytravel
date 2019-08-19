@@ -10,21 +10,19 @@
                 <th>End Time</th>
                 <th class="more-info"></th>
             </tr>
-            <tr v-for="(item, index) in $data.appointments" :key="index">
-                <td> {{ item.first_name +' '+ item.last_name }} </td>
-                <td> {{ item.type }} </td>
-                <td> {{ item.date }} </td>
-                <td> {{ item.treatment_start_time }} </td>
-                <td> {{ item.duration }} minutes</td>
-                <td> {{ item.treatment_end_time }} </td>
-                <td class="more-info"><a :href="'/bookings/' + item.id"><button type="button" class="btn btn-info">more info</button></a></td>
-            </tr>
+            <appointment v-for="(appointment, index) in $data.appointments" :key="index" :appointment="appointment"></appointment>
         </table>
-    </div>   
+    </div>
 </template>
 
 <script>
 export default {
+    props: {
+        user: {
+            default: null,
+            type: Number
+        }
+    },
     data() {
         return {
             appointments: []
@@ -36,17 +34,15 @@ export default {
     methods: {
         async getAppointments() {
             try {
-                const response = await window.axios.get('/api/data');
+                const response = await window.axios.get(`/api/users/${this.$props.user}/appointments`);
                 const appointments = response.data.data;
 
                 this.$data.appointments = appointments;
             } catch (e) {
                 console.log(e);
             }
-
         }
     }
 }
-
 </script>
 

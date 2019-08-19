@@ -3,12 +3,13 @@
 namespace App\Http\Controllers\Auth;
 
 use App\User;
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\AbstractController;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Support\Str;
 
-class RegisterController extends Controller
+class RegisterController extends AbstractController
 {
     /*
     |--------------------------------------------------------------------------
@@ -28,7 +29,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/bookings';
 
     /**
      * Create a new controller instance.
@@ -63,10 +64,18 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
+        $user = User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
+            'api_token' => Str::random(60),
         ]);
+
+        dd($user);    
     }
+
+    // protected function redirectPath()
+    // {
+    //     return route('/');
+    // }
 }

@@ -19,7 +19,13 @@ window.Vue = require('vue');
 // const files = require.context('./', true, /\.vue$/i);
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default));
 
-Vue.component('first-component', require('./components/first-component.vue').default);
+Vue.component('appointments-list', require('./components/appointments-list.vue').default);
+Vue.component('appointment', require('./components/appointment.vue').default);
+Vue.component('moreinfo-component', require('./components/moreinfo-component.vue').default);
+Vue.component('moreinfo-btns', require('./components/moreinfo-btns.vue').default);
+Vue.component('moreinfo-btnshidden', require('./components/moreinfo-btnshidden.vue').default);
+Vue.component('moreinfo-details', require('./components/moreinfo-details.vue').default);
+Vue.component('form-component', require('./components/form-component.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
