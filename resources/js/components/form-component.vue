@@ -136,18 +136,21 @@ import { dateFunction } from '../helpers/dateFormatter';
                 if(this.$props.appointmentId){
                     return "Edit your Treatment";
                 }
-                    return "Book your Treatment";
+
+                return "Book your Treatment";
             },
             homePath() {
                 if(this.$props.appointmentId){
                     return `/bookings/${this.$props.appointmentId}`;
                 }
-                    return "/bookings";
+
+                return "/bookings";
             },
             sendMethodType() {
                 if(this.$props.appointmentId){
                     return "PUT";
                 }
+
                 return "POST";
             }
         },
@@ -156,7 +159,6 @@ import { dateFunction } from '../helpers/dateFormatter';
                 try {
                     const response = await window.axios.get(`/api/formdata`);
                     const { treatments, workingHours } = response.data.data;
-                    
                     this.$data.treatments = treatments;
                     this.$data.workingHours = workingHours;
                 } catch (e) {
